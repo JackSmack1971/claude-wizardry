@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "version": 1,
+  "description": "Shared Claude Code settings for a solo TypeScript Ethereum dapp repository.",
+  "model": "sonnet",
+  "disableSkillShellExecution": true,
+  "disableBypassPermissionsMode": "disable",
+  "env": {
+    "BASH_DEFAULT_TIMEOUT_MS": "300000",
+    "API_TIMEOUT_MS": "1200000"
+  },
+  "enabledPlugins": {
+    "security-guidance@claude-plugins-official": true
+  },
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "allow": [
+      "Bash(git status)",
+      "Bash(git diff)",
+      "Bash(git log --oneline -20)",
+      "Bash(git branch --show-current)",
+      "Bash(npm test)",
+      "Bash(npm run lint)",
+      "Bash(npm run typecheck)",
+      "Bash(npm run test:contracts)",
+      "Bash(npm run test:e2e)",
+      "Bash(pnpm test)",
+      "Bash(pnpm lint)",
+      "Bash(pnpm typecheck)",
+      "Bash(pnpm test:contracts)",
+      "Bash(pnpm test:e2e)",
+      "Bash(python -m pytest:*)",
+      "Bash(python -m py_compile:*)",
+      "Bash(node .claude/workflows/issue-to-pr.js:*)",
+      "Bash(node .claude/workflows/web3-audit.js:*)",
+      "Bash(node .claude/workflows/review-readiness.js:*)",
+      "Bash(node .claude/workflows/release-readiness.js:*)",
+      "Bash(node .claude/workflows/upstream-audit.js:*)"
+    ],
+    "deny": [
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Bash(cat .env)",
+      "Bash(type .env)",
+      "Bash(cat .env.*)",
+      "Bash(type .env.*)",
+      "Bash(git push --force:*)",
+      "Bash(git reset --hard:*)",
+      "Bash(rm -rf:*)",
+      "Bash(del /f /s /q:*)",
+      "Bash(terraform destroy:*)",
+      "Bash(kubectl delete:*)",
+      "Bash(dropdb:*)",
+      "Bash(cast wallet:*)",
+      "Bash(solana-keygen recover:*)"
+    ]
+  },
+  "confirmations": {
+    "dependencyChanges": true,
+    "databaseMigrations": true,
+    "publicApiChanges": true,
+    "deployments": true,
+    "contractDeployments": true,
+    "chainConfigChanges": true
+  },
+  "tools": {
+    "shell": {
+      "enabled": true,
+      "timeoutSeconds": 120
+    },
+    "git": {
+      "protectBranches": [
+        "main",
+        "master"
+      ],
+      "requireStatusBeforeCommit": true
+    }
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/session-start.js",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/session-start.js",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/pre-tool-use.js",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash|Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/post-tool-use.js",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/stop.js",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/stop.js",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  },
+  "claudeMdExcludes": [
+    ".claude/worktrees/**"
+  ]
+}
