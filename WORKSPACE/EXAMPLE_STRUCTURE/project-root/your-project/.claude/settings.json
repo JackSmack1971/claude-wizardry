@@ -1,23 +1,23 @@
 {
-  "$schema": "https://example.invalid/schemas/claude-code-project-settings.schema.json",
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "version": 1,
   "description": "Shared project Claude Code settings. Commit only team-safe values.",
   "permissions": {
-    "mode": "ask",
+    "defaultMode": "acceptEdits",
     "allow": [
-      "git status",
-      "git diff",
-      "git log --oneline -20",
-      "npm test",
-      "npm run lint",
-      "npm run typecheck"
+      "Bash(git status)",
+      "Bash(git diff)",
+      "Bash(git log --oneline -20)",
+      "Bash(npm test)",
+      "Bash(npm run lint)",
+      "Bash(npm run typecheck)"
     ],
     "deny": [
-      "git push --force",
-      "git reset --hard",
-      "rm -rf",
-      "terraform destroy",
-      "kubectl delete"
+      "Bash(git push --force *)",
+      "Bash(git reset --hard *)",
+      "Bash(rm -rf *)",
+      "Bash(terraform destroy *)",
+      "Bash(kubectl delete *)"
     ]
   },
   "tools": {
@@ -35,16 +35,52 @@
   },
   "hooks": {
     "SessionStart": [
-      ".claude/hooks/session-start.sh"
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/session-start.sh",
+            "timeout": 30
+          }
+        ]
+      }
     ],
     "PreToolUse": [
-      ".claude/hooks/pre-tool-use.sh"
+      {
+        "matcher": "Bash|Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/pre-tool-use.sh",
+            "timeout": 30
+          }
+        ]
+      }
     ],
     "PostToolUse": [
-      ".claude/hooks/post-tool-use.sh"
+      {
+        "matcher": "Bash|Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/post-tool-use.sh",
+            "timeout": 30
+          }
+        ]
+      }
     ],
     "Stop": [
-      ".claude/hooks/stop.sh"
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/stop.sh",
+            "timeout": 30
+          }
+        ]
+      }
     ]
   }
 }
