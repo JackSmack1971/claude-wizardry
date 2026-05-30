@@ -1,24 +1,25 @@
 # 🧙 claude-wizardry
 
-**A Claude Code framework factory — generate production-ready AI development environments for any project tier, from home coder to regulated enterprise.**
+**A Claude Code framework factory — generate production-ready AI operating environments for any project tier, from home coder to regulated enterprise.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Native-blueviolet?logo=anthropic)](https://docs.anthropic.com/en/docs/claude-code)
-[![Frameworks](https://img.shields.io/badge/Frameworks-6%20Tiers-brightgreen)](#-framework-tiers)
-[![Maintained](https://img.shields.io/badge/Maintained-2026-blue)](#-roadmap)
+[![Frameworks](https://img.shields.io/badge/Frameworks-6%20Tiers-brightgreen)](#️-framework-tiers)
+[![Maintained](https://img.shields.io/badge/Maintained-2026-blue)](#️-roadmap)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-orange.svg)](CONTRIBUTING.md)
 [![Good First Issues](https://img.shields.io/github/issues/JackSmack1971/claude-wizardry/good%20first%20issue)](https://github.com/JackSmack1971/claude-wizardry/issues?q=is%3Aissue+label%3A%22good+first+issue%22)
 
 ---
 
-> **New to Claude Code?**  
+> **New to Claude Code?**
+>
 > [Claude Code](https://docs.anthropic.com/en/docs/claude-code) is Anthropic's AI coding assistant that runs in your terminal. It reads special instruction files in your project — like `CLAUDE.md` and `.claude/settings.json` — and uses them to write code, run tests, and manage pull requests on your behalf. **This repo generates those instruction files for you.**
 
 ---
 
 ## ✨ What Does This Repo Do?
 
-**claude-wizardry** is a _framework factory_. You tell it what kind of project you're working on, and it produces a complete, ready-to-drop-in Claude Code operating environment tailored to your situation.
+**claude-wizardry** is a _framework factory_. You describe your project context and it produces a complete, ready-to-drop-in Claude Code operating environment — no templates to fill in, no guessing what files go where.
 
 ```
 You describe your project context
@@ -49,8 +50,8 @@ Claude Code reads it automatically — no extra setup
 > 1. [Git](https://git-scm.com/) — for cloning this repo
 > 2. [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code) — the AI assistant that reads the framework files
 >
-> Install Claude Code with: `npm install -g @anthropic-ai/claude-code`  
-> _(Node.js required — [get it here](https://nodejs.org))_
+> Install Claude Code: `npm install -g @anthropic-ai/claude-code`
+> _(Requires [Node.js](https://nodejs.org) — free to download)_
 
 ### Step 1 — Clone this repo
 
@@ -59,7 +60,14 @@ git clone https://github.com/JackSmack1971/claude-wizardry.git
 cd claude-wizardry
 ```
 
-### Step 2 — Browse the example scaffold
+### Step 2 — Read the doctrine (optional but recommended)
+
+```bash
+# Understand the tier model and artifact contracts before customizing
+cat SOUL/CLAUDE.md
+```
+
+### Step 3 — Browse the example scaffold
 
 ```bash
 # See every file in the canonical 3-layer scaffold
@@ -69,7 +77,7 @@ cat WORKSPACE/EXAMPLE_STRUCTURE/FILE-TREE.txt
 cat WORKSPACE/EXAMPLE_STRUCTURE/README.md
 ```
 
-### Step 3 — Copy a framework into your project
+### Step 4 — Copy a framework into your project
 
 The `solo-pro-starter` is the most complete ready-to-use framework (TypeScript · Ethereum dapps · viem/ethers):
 
@@ -80,7 +88,7 @@ cp    WORKSPACE/solo-pro-starter/CLAUDE.md /path/to/your-project/
 cp    WORKSPACE/solo-pro-starter/AGENTS.md /path/to/your-project/
 ```
 
-### Step 4 — Open Claude Code in your project
+### Step 5 — Open Claude Code in your project
 
 ```bash
 cd /path/to/your-project
@@ -97,6 +105,8 @@ Claude Code will automatically discover and load every framework file. You're re
 claude-wizardry/
 ├── AGENTS.md                        ← Mission doc + architect rules for this repo
 ├── LICENSE                          ← MIT License
+├── SOUL/                            ← Public SSOT: tier doctrine, artifact contracts, design philosophy
+│   └── CLAUDE.md                    ← The authoritative framework reference — read this first
 └── WORKSPACE/                       ← Every generated framework lives here
     ├── EXAMPLE_STRUCTURE/           ← Canonical 3-layer reference scaffold
     │   ├── enterprise-system/       ← IT/platform admin-managed policies
@@ -105,14 +115,16 @@ claude-wizardry/
     └── solo-pro-starter/            ← Featured framework (TypeScript Ethereum dapp)
         ├── .claude/
         │   ├── agents/              ← Specialized AI sub-agents
-        │   ├── commands/            ← Custom slash commands
-        │   ├── hooks/               ← Auto-run scripts (pre/post tool use, session)
+        │   ├── commands/            ← Custom slash commands (e.g. /review-pr)
+        │   ├── hooks/               ← Auto-run scripts (before/after every tool call)
         │   ├── rules/               ← Domain guardrails (security, architecture…)
         │   ├── skills/              ← Reusable AI skill modules
         │   └── workflows/           ← Multi-step automations (issue → PR, audits)
         ├── CLAUDE.md                ← Root instructions for Claude
         └── AGENTS.md                ← Sub-agent roster and roles
 ```
+
+> **`SOUL/` is the single source of truth.** Tier doctrine, artifact contracts, security defaults, naming conventions — all of it lives in [`SOUL/CLAUDE.md`](SOUL/CLAUDE.md). Read it before building or contributing a framework.
 
 ---
 
@@ -129,21 +141,21 @@ Each tier builds on the one before it. Pick the lowest tier that covers your nee
 | `enterprise_governed` | Enterprise platform group | + managed settings · MCP allowlists · audit logs |
 | `regulated_secure` | Research lab, regulated org | + traceability · approval gates · evidence templates |
 
-> **Tip:** Claude Code will suggest a tier classification and ask one clarifying question before generating anything — you never have to guess.
+> **Tip:** When you ask Claude Code to build a framework, it will suggest a tier and ask one clarifying question before generating anything — you never have to guess.
 
 ---
 
 ## 🧩 Generated Artifacts Reference
 
-A "framework" is a set of plain text files that Claude Code reads automatically. Here's what each file type does:
+A "framework" is a set of plain-text files that Claude Code reads automatically. Here's what each type does:
 
 | File | Plain-English Purpose |
 |------|-----------------------|
-| `CLAUDE.md` | The main instruction file — tells Claude how to behave in your project |
+| `CLAUDE.md` | Main instruction file — tells Claude how to behave in your project |
 | `.claude/settings.json` | What Claude is allowed/forbidden to do; security permissions |
-| `.claude/rules/*.md` | Guardrails for specific domains (e.g. "never modify a prod ABI without review") |
+| `.claude/rules/*.md` | Guardrails for specific domains (e.g. "never modify a prod contract ABI without review") |
 | `.claude/agents/*.md` | Specialist AI sub-agents Claude can delegate tasks to |
-| `.claude/commands/*.md` | Slash commands you can type (e.g. `/review-pr`) |
+| `.claude/commands/*.md` | Slash commands you can type (e.g. `/review-pr`, `/audit/web3`) |
 | `.claude/hooks/*.js` | Scripts that run automatically before/after every tool call |
 | `.claude/skills/*/SKILL.md` | Reusable knowledge modules Claude loads on demand |
 | `.claude/workflows/*.js` | Multi-step automations (e.g. issue → branch → PR in one command) |
@@ -153,41 +165,36 @@ A "framework" is a set of plain text files that Claude Code reads automatically.
 
 ## 🔍 Featured Framework: `solo-pro-starter`
 
-Built for a TypeScript Ethereum dapp developer. Uses `viem` as the primary client library, with `ethers` v6 compatibility where a project already uses it.
+Built for a TypeScript Ethereum dapp developer. Uses `viem` as the primary client library (`createPublicClient`, `createWalletClient`, typed contract interactions), with `ethers` v6 compatibility where a repo already uses it.
 
 ### Included Agents
 
 | Agent | What It Does |
 |-------|-------------|
-| `implementation-agent` | Writes code from GitHub issues, enforces stack rules |
+| `implementation-agent` | Writes code from GitHub issues, enforces stack and chain rules |
 | `pr-reviewer` | Reviews PRs for correctness, security, and ABI drift |
 | `release-gatekeeper` | Runs pre-release checks before any tag or publish |
 | `upstream-auditor` | Flags outdated or breaking upstream dependency changes |
 | `web3-auditor` | Audits contract surfaces, wallet flows, and signature logic |
 
-### Slash Commands
+### Available Slash Commands
 
 ```
 /review-pr          → Full PR review with security checklist
-/create-pr          → Turn a GitHub issue into a branch + PR automatically
-/audit/upstream     → Check for dep drift and breaking upstream changes
-/audit/web3         → Audit on-chain surfaces and wallet flow regressions
-/release/readiness  → Gate check before tagging a release
+/create-pr          → Issue → branch → PR automation
+/audit/upstream     → Check for outdated deps and breaking upstream changes
+/audit/web3         → Audit contract surfaces and wallet flow regressions
+/release/readiness  → Pre-release gate check
 ```
 
-### Security Enforcement
+### Security Rules Enforced
 
-These rules are **always enforced** via `settings.json` — Claude cannot override them:
-
-- 🚫 Reading `.env` files or secrets directories
-- 🚫 Destructive shell patterns (`rm -rf`, force push, database drops)
-
-These require **explicit confirmation** every time:
-
-- ⚠️ Dependency additions
-- ⚠️ Database migrations
-- ⚠️ Contract ABI changes, deployment scripts, signer logic
-- ⚠️ Public API changes, CI/CD workflow edits
+| What | Rule |
+|------|------|
+| `.env` files and secrets directories | Always blocked (read + write) |
+| `rm -rf`, force push, DB drops | Always blocked |
+| Contract ABI changes, deployment scripts, signer logic | Require explicit confirmation |
+| Dependency additions, DB migrations, public API changes | Require explicit confirmation |
 
 ---
 
@@ -208,53 +215,57 @@ graph TD
     I --> J[CLAUDE.md + settings.json]
     I --> K[rules/ + skills/ + agents/]
     I --> L[commands/ + hooks/ + workflows/]
-    J & K & L --> M[Copy .claude/ into your repo]
-    M --> N[Claude Code reads it automatically]
+    J & K & L --> M[Drop .claude/ into your repo]
+    M --> N[Claude Code reads and follows it automatically]
 ```
 
-### The 3-Layer Configuration Model
-
-Claude Code merges settings from three layers, in this priority order:
+### The 3-Layer Config Model
 
 ```
-enterprise-system/managed-settings.json    ← IT/platform team: enforced org-wide policy
-          ↓ can override
-user-home/.claude/settings.json            ← You: personal global preferences
-          ↓ can override
-project-root/.claude/settings.json         ← Your repo: project-specific rules
+enterprise-system/managed-settings.json   ← IT/platform: enforced policies (overrides all)
+        ↓ overridden by
+user-home/.claude/settings.json           ← Developer: personal global preferences
+        ↓ overridden by
+project-root/.claude/settings.json        ← Repo: project-specific rules
 ```
 
-**Why this matters for beginners:** You only need to touch the third layer. The first two are optional — for organizations that need stricter control.
+This mirrors how real organizations work — admins set policy, developers customize within bounds, projects add specifics.
 
 ---
 
 ## 🤝 Contributing
 
-All skill levels welcome. Start with a [good first issue](https://github.com/JackSmack1971/claude-wizardry/issues?q=is%3Aissue+label%3A%22good+first+issue%22) if you're new.
+### Before You Start
 
-### Step-by-Step Contribution Guide
+Read [`SOUL/CLAUDE.md`](SOUL/CLAUDE.md) first. It defines the tier doctrine, artifact contracts, security defaults, and naming conventions that every framework must follow. It's the authoritative reference for what belongs where and why.
+
+### Good First Issues
+
+Browse issues tagged [`good first issue`](https://github.com/JackSmack1971/claude-wizardry/issues?q=is%3Aissue+label%3A%22good+first+issue%22) — these are intentionally small, well-scoped, and don't require deep framework knowledge.
+
+### Development Workflow
 
 ```bash
-# 1. Fork on GitHub, then clone your fork
+# 1. Fork and clone
 git clone https://github.com/YOUR_USERNAME/claude-wizardry.git
 cd claude-wizardry
 
-# 2. Create a feature branch (use kebab-case)
+# 2. Create a branch
 git checkout -b feat/your-feature-name
 
 # 3. Make your changes
-#    New frameworks → WORKSPACE/<slug-name>/
-#    Always include a README.md in your new framework folder
-#    NEVER commit anything from SOUL/ or any secrets
+# - New frameworks go in WORKSPACE/<slug-name>/
+# - Always include a README.md in your framework folder
+# - Never commit secrets or machine-local paths
 
-# 4. Verify your scaffold (no automated tests — structural checks)
+# 4. Verify your scaffold — no test runner, structural checks only
 find WORKSPACE/your-new-framework -path "*/.claude/*" -print
-# Every file referenced in CLAUDE.md must exist
+# Every file referenced in CLAUDE.md must exist on disk
 
 # 5. Commit with a conventional prefix
 git commit -m "scaffold: add team-standard react framework"
 
-# 6. Push and open a PR on GitHub
+# 6. Push and open a PR
 git push origin feat/your-feature-name
 ```
 
@@ -262,7 +273,7 @@ git push origin feat/your-feature-name
 
 | Prefix | Use For |
 |--------|---------|
-| `docs:` | README, AGENTS.md, or other documentation |
+| `docs:` | README, AGENTS.md, or SOUL/ documentation |
 | `scaffold:` | New framework or major scaffold change |
 | `fix:` | Correcting a path, hook, or rule reference |
 | `feat:` | New tier, new artifact type, new tool |
@@ -288,27 +299,30 @@ This project follows the [Contributor Covenant v2.1](https://www.contributor-cov
 |--------|------|
 | ✅ Done | `solo_pro` tier framework (`solo-pro-starter`) |
 | ✅ Done | Complete `EXAMPLE_STRUCTURE` 3-layer scaffold |
-| 🔲 Planned | `home_light` starter template |
-| 🔲 Planned | `team_standard` framework (review/release focus) |
-| 🔲 Planned | `startup_scale` framework (CI/CD hooks) |
-| 🔲 Planned | `enterprise_governed` managed-settings templates |
-| 🔲 Planned | `regulated_secure` framework (traceability, evidence gates) |
-| 🔲 Planned | Interactive CLI scaffolder (`npx claude-wizardry init`) |
-| 🔲 Planned | Automated structural validation script |
+| ✅ Done | `SOUL/` made public as open SSOT |
+| ⬜ Planned | `home_light` starter template |
+| ⬜ Planned | `team_standard` framework (review/release focus) |
+| ⬜ Planned | `startup_scale` framework (CI/CD hooks) |
+| ⬜ Planned | `enterprise_governed` managed-settings templates |
+| ⬜ Planned | `regulated_secure` framework (traceability, evidence gates) |
+| ⬜ Planned | Interactive CLI scaffolder (`npx claude-wizardry init`) |
+| ⬜ Planned | Automated structural validation script |
 
 ---
 
 ## 🔒 Security
 
-**Do not open a public GitHub issue for security vulnerabilities.**
+**Do not open public issues for security vulnerabilities.**
 
-Report security issues privately via [GitHub's vulnerability reporting](https://github.com/JackSmack1971/claude-wizardry/security/advisories/new).
+Report security issues via [GitHub's private vulnerability reporting](https://github.com/JackSmack1971/claude-wizardry/security/advisories/new).
 
-All generated frameworks enforce the following by default — these cannot be disabled without editing `settings.json` directly:
+**Security defaults enforced in every generated framework:**
 
-- Secrets and `.env` files are always read-blocked
-- Destructive shell operations are always denied
-- High-risk operations (deployments, migrations, API changes) always require confirmation
+- Secrets, `.env`, and key files — always read/write blocked
+- Destructive shell patterns (`rm -rf`, force push, `DROP TABLE`) — always denied
+- High-risk operations (deployments, migrations, ABI changes, dep additions) — require explicit confirmation
+
+Full security doctrine is in [`SOUL/CLAUDE.md`](SOUL/CLAUDE.md).
 
 ---
 
