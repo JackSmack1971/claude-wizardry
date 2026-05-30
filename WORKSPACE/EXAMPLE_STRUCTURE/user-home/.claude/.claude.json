@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "description": "Template for global Claude Code state. Replace placeholder values locally only.",
+  "identity": {
+    "user": "local-user",
+    "machine": "local-machine"
+  },
+  "oauth": {
+    "status": "placeholder-do-not-commit-real-tokens",
+    "accessToken": null,
+    "refreshToken": null
+  },
+  "trustedWorkspaces": [],
+  "cache": {
+    "lastModel": null,
+    "lastWorkspace": null
+  }
+}

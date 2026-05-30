@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "name": "10-security",
+  "description": "Security guardrails for all workspaces.",
+  "secrets": {
+    "neverEchoEnvVarsMatching": [
+      ".*TOKEN.*",
+      ".*SECRET.*",
+      ".*KEY.*",
+      ".*PASSWORD.*"
+    ],
+    "blockedFileGlobs": [
+      "**/.env",
+      "**/.env.*",
+      "**/*credentials*",
+      "**/*service-account*"
+    ]
+  },
+  "commands": {
+    "requireConfirmationPatterns": [
+      "git push --force",
+      "git reset --hard",
+      "git clean -fd",
+      "kubectl delete",
+      "terraform destroy"
+    ]
+  }
+}

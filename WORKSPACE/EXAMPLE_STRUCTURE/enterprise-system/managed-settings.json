@@ -1,0 +1,62 @@
+{
+  "$schema": "https://example.invalid/schemas/claude-code-managed-settings.schema.json",
+  "version": 1,
+  "description": "Immutable enterprise-wide Claude Code policy baseline.",
+  "policy": {
+    "allowUserOverride": false,
+    "requireTrustedWorkspace": true,
+    "defaultPermissionMode": "deny-by-default",
+    "blockDangerousCommands": true,
+    "requireHumanReviewFor": [
+      "production_deploy",
+      "secret_access",
+      "database_migration",
+      "destructive_filesystem_operation",
+      "dependency_upgrade_major"
+    ]
+  },
+  "network": {
+    "mode": "restricted",
+    "allowedDomains": [
+      "github.com",
+      "api.github.com",
+      "docs.github.com",
+      "npmjs.com",
+      "pypi.org"
+    ],
+    "blockedDomains": [
+      "pastebin.com",
+      "gist.githubusercontent.com/raw"
+    ]
+  },
+  "tools": {
+    "shell": {
+      "enabled": true,
+      "defaultTimeoutSeconds": 60,
+      "blockedPatterns": [
+        "rm -rf /",
+        "chmod -R 777",
+        "curl .*\\| sh",
+        "wget .*\\| sh",
+        "dd if=",
+        "mkfs",
+        "shutdown",
+        "reboot"
+      ]
+    },
+    "git": {
+      "requireCleanStatusBeforeMutation": true,
+      "protectBranches": [
+        "main",
+        "master",
+        "production",
+        "release/*"
+      ]
+    }
+  },
+  "audit": {
+    "logToolUse": true,
+    "logPermissionDecisions": true,
+    "redactSecrets": true
+  }
+}

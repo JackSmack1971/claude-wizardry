@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "name": "20-network",
+  "description": "Conservative network access policy.",
+  "network": {
+    "default": "deny",
+    "allow": [
+      "github.com",
+      "api.github.com",
+      "docs.github.com",
+      "raw.githubusercontent.com",
+      "registry.npmjs.org",
+      "pypi.org",
+      "files.pythonhosted.org"
+    ],
+    "deny": [
+      "private-address-space",
+      "link-local-address-space",
+      "metadata.google.internal",
+      "169.254.169.254"
+    ]
+  }
+}

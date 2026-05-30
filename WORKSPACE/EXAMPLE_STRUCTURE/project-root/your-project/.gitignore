@@ -1,0 +1,23 @@
+# Claude local overrides
+CLAUDE.local.md
+.claude/settings.local.json
+.claude/worktrees/*
+!.claude/worktrees/.gitkeep
+
+# Secrets
+.env
+.env.*
+*.pem
+*.key
+*credentials*
+*service-account*
+
+# Common build artifacts
+node_modules/
+dist/
+build/
+coverage/
+__pycache__/
+.pytest_cache/
+.cache/
+.DS_Store

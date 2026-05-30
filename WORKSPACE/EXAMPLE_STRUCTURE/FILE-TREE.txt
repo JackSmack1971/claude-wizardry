@@ -1,0 +1,117 @@
+claude-code-complete-scaffolding/
+├── enterprise-system/
+│   ├── managed-settings.d/
+│   │   ├── 10-security.json
+│   │   ├── 20-network.json
+│   │   └── 30-tooling.json
+│   ├── managed-settings.json
+│   └── README.md
+├── project-root/
+│   └── your-project/
+│       ├── .claude/
+│       │   ├── agents/
+│       │   │   ├── implementation-agent.md
+│       │   │   ├── pr-reviewer.md
+│       │   │   ├── README.md
+│       │   │   └── upstream-auditor.md
+│       │   ├── commands/
+│       │   │   ├── audit-upstream.md
+│       │   │   ├── create-pr.md
+│       │   │   ├── README.md
+│       │   │   └── review-pr.md
+│       │   ├── hooks/
+│       │   │   ├── post-tool-use.sh
+│       │   │   ├── pre-tool-use.sh
+│       │   │   ├── README.md
+│       │   │   ├── session-start.sh
+│       │   │   └── stop.sh
+│       │   ├── output-styles/
+│       │   │   ├── forensic-verifier.md
+│       │   │   └── README.md
+│       │   ├── rules/
+│       │   │   ├── architecture.md
+│       │   │   ├── README.md
+│       │   │   ├── security.md
+│       │   │   └── testing.md
+│       │   ├── skills/
+│       │   │   ├── dependency-audit/
+│       │   │   │   ├── references/
+│       │   │   │   │   └── audit-template.md
+│       │   │   │   ├── scripts/
+│       │   │   │   │   └── list_manifests.py
+│       │   │   │   └── SKILL.md
+│       │   │   ├── fsv-verify/
+│       │   │   │   ├── references/
+│       │   │   │   │   └── fsv-checklist.md
+│       │   │   │   ├── scripts/
+│       │   │   │   │   └── fsv_file_snapshot.py
+│       │   │   │   └── SKILL.md
+│       │   │   ├── repo-audit/
+│       │   │   │   └── SKILL.md
+│       │   │   └── README.md
+│       │   ├── workflows/
+│       │   │   ├── assets/
+│       │   │   │   ├── codex-trigger-comment.md
+│       │   │   │   ├── issue-template.md
+│       │   │   │   ├── pr-template.md
+│       │   │   │   └── workflow.schema.json
+│       │   │   ├── issue-to-pr.js
+│       │   │   ├── README.md
+│       │   │   └── upstream-audit.js
+│       │   ├── worktrees/
+│       │   │   └── .gitkeep
+│       │   ├── README.md
+│       │   ├── settings.json
+│       │   └── settings.local.json
+│       ├── .gitignore
+│       ├── AGENTS.md
+│       ├── CLAUDE.local.md
+│       └── CLAUDE.md
+├── user-home/
+│   └── .claude/
+│       ├── agents/
+│       │   ├── code-reviewer.md
+│       │   ├── README.md
+│       │   └── research-auditor.md
+│       ├── commands/
+│       │   ├── audit.md
+│       │   ├── README.md
+│       │   └── review.md
+│       ├── hooks/
+│       │   ├── notify.sh
+│       │   ├── pre-tool-use.sh
+│       │   ├── README.md
+│       │   └── session-start.sh
+│       ├── output-styles/
+│       │   ├── adversarial-security-auditor.md
+│       │   ├── README.md
+│       │   └── token-optimized-terse.md
+│       ├── projects/
+│       │   └── example-project-hash/
+│       │       └── MEMORY.md
+│       ├── rules/
+│       │   ├── global-coding-habits.md
+│       │   ├── global-security-baseline.md
+│       │   └── README.md
+│       ├── skills/
+│       │   ├── fsv-verify/
+│       │   │   ├── references/
+│       │   │   │   └── source-of-truth.md
+│       │   │   ├── scripts/
+│       │   │   │   └── verify_file_delta.py
+│       │   │   └── SKILL.md
+│       │   ├── reality-grounded-engineering/
+│       │   │   └── SKILL.md
+│       │   └── README.md
+│       ├── workflows/
+│       │   ├── assets/
+│       │   │   ├── payload-template.json
+│       │   │   └── workflow.schema.json
+│       │   ├── README.md
+│       │   └── sys-audit.js
+│       ├── .claude.json
+│       ├── CLAUDE.md
+│       ├── README.md
+│       └── settings.json
+├── INSTALL-NOTES.md
+└── README.md

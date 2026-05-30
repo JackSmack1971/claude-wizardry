@@ -1,0 +1,50 @@
+{
+  "$schema": "https://example.invalid/schemas/claude-code-project-settings.schema.json",
+  "version": 1,
+  "description": "Shared project Claude Code settings. Commit only team-safe values.",
+  "permissions": {
+    "mode": "ask",
+    "allow": [
+      "git status",
+      "git diff",
+      "git log --oneline -20",
+      "npm test",
+      "npm run lint",
+      "npm run typecheck"
+    ],
+    "deny": [
+      "git push --force",
+      "git reset --hard",
+      "rm -rf",
+      "terraform destroy",
+      "kubectl delete"
+    ]
+  },
+  "tools": {
+    "shell": {
+      "enabled": true,
+      "timeoutSeconds": 120
+    },
+    "git": {
+      "protectBranches": [
+        "main",
+        "master"
+      ],
+      "requireStatusBeforeCommit": true
+    }
+  },
+  "hooks": {
+    "SessionStart": [
+      ".claude/hooks/session-start.sh"
+    ],
+    "PreToolUse": [
+      ".claude/hooks/pre-tool-use.sh"
+    ],
+    "PostToolUse": [
+      ".claude/hooks/post-tool-use.sh"
+    ],
+    "Stop": [
+      ".claude/hooks/stop.sh"
+    ]
+  }
+}

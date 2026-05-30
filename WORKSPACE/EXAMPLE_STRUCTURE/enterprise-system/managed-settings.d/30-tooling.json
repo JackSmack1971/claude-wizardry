@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "name": "30-tooling",
+  "description": "Tool defaults and safe automation limits.",
+  "limits": {
+    "maxParallelAgents": 8,
+    "maxFileWriteBytes": 5000000,
+    "maxCommandRuntimeSeconds": 300
+  },
+  "qualityGates": {
+    "requireTestsBeforePR": true,
+    "requireDiffSummary": true,
+    "requireRollbackNotes": true
+  }
+}

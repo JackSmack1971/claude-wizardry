@@ -1,0 +1,7 @@
+{
+  "task": "audit",
+  "scope": "current-workspace",
+  "maxParallelAgents": 4,
+  "requireEvidence": true,
+  "mutationsAllowed": false
+}

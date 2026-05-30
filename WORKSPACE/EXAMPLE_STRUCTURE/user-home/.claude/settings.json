@@ -1,0 +1,37 @@
+{
+  "$schema": "https://example.invalid/schemas/claude-code-user-settings.schema.json",
+  "version": 1,
+  "theme": "system",
+  "defaultModel": "sonnet",
+  "permissionMode": "ask",
+  "globalToolDefaults": {
+    "shell": {
+      "enabled": true,
+      "timeoutSeconds": 60
+    },
+    "git": {
+      "enabled": true,
+      "protectBranches": [
+        "main",
+        "master"
+      ]
+    }
+  },
+  "globalBlocks": [
+    "**/.env",
+    "**/.env.*",
+    "**/node_modules/**",
+    "**/.git/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/__pycache__/**"
+  ],
+  "hooks": {
+    "SessionStart": [
+      "~/.claude/hooks/session-start.sh"
+    ],
+    "PreToolUse": [
+      "~/.claude/hooks/pre-tool-use.sh"
+    ]
+  }
+}
