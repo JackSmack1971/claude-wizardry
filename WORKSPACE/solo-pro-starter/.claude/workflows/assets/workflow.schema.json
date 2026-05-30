@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Claude Workflow Contract",
+  "type": "object",
+  "required": [
+    "status",
+    "workflow",
+    "phaseOrder",
+    "outputSections",
+    "outputTemplate",
+    "schema"
+  ],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "active-contract",
+        "deprecated",
+        "draft"
+      ]
+    },
+    "workflow": {
+      "type": "string"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "intent": {
+      "type": "string"
+    },
+    "requiredInput": {
+      "type": "string"
+    },
+    "relatedCommands": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "phaseOrder": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "subagents": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "composedSkills": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "riskSurfaces": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "handoffMemory": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "verification": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "findingBuckets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "gatingChecks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "outputSections": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "outputTemplate": {
+      "type": "string"
+    },
+    "schema": {
+      "type": "string"
+    },
+    "runtime": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "type": "string"
+        },
+        "executable": {
+          "type": "boolean"
+        },
+        "helper": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "invocation": {
+      "type": "object",
+      "properties": {
+        "rawArguments": {
+          "type": "string"
+        },
+        "sessionArgs": {
+          "type": "string"
+        },
+        "requiredInput": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "hasInput": {
+          "type": "boolean"
+        },
+        "cwd": {
+          "type": "string"
+        },
+        "sessionId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "effort": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "readiness": {
+      "type": "string",
+      "enum": [
+        "ready",
+        "needs-input"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

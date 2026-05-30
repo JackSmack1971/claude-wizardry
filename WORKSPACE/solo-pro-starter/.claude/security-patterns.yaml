@@ -1,0 +1,25 @@
+patterns:
+  - id: hardcoded-private-key
+    regex: "(?i)(private[_-]?key\\s*[:=]\\s*['\\\"][^'\\\"]+['\\\"]|0x[a-fA-F0-9]{64})"
+    message: "Potential hardcoded private key or raw hex secret. Verify this is not a real credential."
+    severity: high
+  - id: raw-seed-phrase
+    regex: "(?i)(seed phrase|mnemonic)"
+    message: "Potential seed phrase material or mnemonic handling. Review carefully."
+    severity: high
+  - id: hardcoded-rpc-provider-secret
+    regex: "(?i)https?://[^\\s'\\\"]*(alchemy|infura|quicknode|ankr)[^\\s'\\\"]+"
+    message: "Potential hardcoded hosted RPC endpoint. Confirm secrets, environment gating, and intended exposure."
+    severity: high
+  - id: mainnet-write-config
+    regex: "(?i)(mainnet).*(write|deploy|upgrade)"
+    message: "Mainnet write or deployment context detected. Confirm environment gating and human approval."
+    severity: medium
+  - id: max-token-approval
+    regex: "(?i)approve\\s*\\([^,]+,\\s*(type\\s*\\(\\s*uint(256)?\\s*\\)\\.max|ethers\\.MaxUint256|maxUint256|2\\s*\\*\\*\\s*256\\s*-\\s*1)"
+    message: "Unlimited token approval pattern detected. Confirm necessity, trust boundary, and revocation posture."
+    severity: medium
+  - id: privileged-upgrade-or-admin-call
+    regex: "(?i)(upgradeToAndCall|upgradeTo|transferOwnership|acceptOwnership|grantRole|revokeRole|setImplementation|pause\\s*\\(|unpause\\s*\\()"
+    message: "Privileged upgrade or admin mutation surface detected. Require executor, rollback, and environment evidence."
+    severity: high
