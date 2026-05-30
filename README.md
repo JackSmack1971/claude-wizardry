@@ -17,6 +17,32 @@
 
 ---
 
+## 🛠️ Two CLIs, One Pipeline
+
+> **This repo runs inside [OpenAI Codex CLI](https://github.com/openai/codex) — not inside Claude Code.** These are two separate tools from two different companies. Understanding which does what is the most important thing to read before you start.
+
+| Tool | Made By | Role in This Repo |
+|------|---------|-------------------|
+| **[Codex CLI](https://github.com/openai/codex)** | OpenAI | **Runs claude-wizardry** — reads `AGENTS.md`, classifies your tier, and generates the framework files |
+| **[Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code)** | Anthropic | **Consumes the output** — reads the generated `.claude/` folder in your project and acts as your AI coding assistant |
+
+```
+You (inside Codex CLI)  →  claude-wizardry generates  →  .claude/ framework files
+                                                                    ↓
+                                             Claude Code CLI reads them in your project
+```
+
+**Why Codex CLI to build Claude Code frameworks?** Codex CLI's `AGENTS.md`-driven agentic model is well-suited for the multi-step classification and generation work required here. The output is vendor-neutral plain text — `.md` and `.json` files that any Claude Code installation picks up automatically.
+
+### What You Need
+
+| Step | Tool | Install |
+|------|------|---------|
+| Generate frameworks (this repo) | **Codex CLI** | `npm install -g @openai/codex` |
+| Use the generated frameworks | **Claude Code CLI** | `npm install -g @anthropic-ai/claude-code` |
+
+---
+
 ## ✨ What Does This Repo Do?
 
 **claude-wizardry** is a _framework factory_. You describe your project context and it produces a complete, ready-to-drop-in Claude Code operating environment — no templates to fill in, no guessing what files go where.
