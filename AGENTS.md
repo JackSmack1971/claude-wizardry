@@ -80,7 +80,7 @@ Do **not** create `.codex/` config or Codex-native `.agents/` unless explicitly 
 ---
 
 ## Code Style & Conventions
-
+ALWAYS: Leverage the context7 MCP skill when writing any code snippets in rule files or other framework files that document code to ensure the most up to date frameworks are built for the user
 - **Do:** Use design tokens and path-scoped rules for domain-specific standards
 - **Do:** Keep `CLAUDE.md` compact — lazy-load detail via `.claude/rules/`
 - **Do:** Build fully functional frameworks — no placeholders, ever

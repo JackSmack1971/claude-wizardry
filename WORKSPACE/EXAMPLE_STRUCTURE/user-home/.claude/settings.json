@@ -1,10 +1,21 @@
 {
-  "$schema": "https://example.invalid/schemas/claude-code-user-settings.schema.json",
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "version": 1,
   "theme": "system",
-  "defaultModel": "sonnet",
-  "permissionMode": "ask",
-  "globalToolDefaults": {
+  "model": "sonnet",
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "deny": [
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/node_modules/**)",
+      "Read(**/.git/**)",
+      "Read(**/dist/**)",
+      "Read(**/build/**)",
+      "Read(**/__pycache__/**)"
+    ]
+  },
+  "tools": {
     "shell": {
       "enabled": true,
       "timeoutSeconds": 60
@@ -17,21 +28,30 @@
       ]
     }
   },
-  "globalBlocks": [
-    "**/.env",
-    "**/.env.*",
-    "**/node_modules/**",
-    "**/.git/**",
-    "**/dist/**",
-    "**/build/**",
-    "**/__pycache__/**"
-  ],
   "hooks": {
     "SessionStart": [
-      "~/.claude/hooks/session-start.sh"
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/session-start.sh",
+            "timeout": 30
+          }
+        ]
+      }
     ],
     "PreToolUse": [
-      "~/.claude/hooks/pre-tool-use.sh"
+      {
+        "matcher": "Bash|Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/pre-tool-use.sh",
+            "timeout": 30
+          }
+        ]
+      }
     ]
   }
 }
