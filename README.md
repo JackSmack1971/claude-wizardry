@@ -97,6 +97,8 @@ Claude Code will automatically discover and load every framework file. You're re
 claude-wizardry/
 ├── AGENTS.md                        ← Mission doc + architect rules for this repo
 ├── LICENSE                          ← MIT License
+├── SOUL/                            ← Public SSOT: tier doctrine, artifact contracts, design philosophy
+│   └── CLAUDE.md                    ← The authoritative framework reference for contributors
 └── WORKSPACE/                       ← Every generated framework lives here
     ├── EXAMPLE_STRUCTURE/           ← Canonical 3-layer reference scaffold
     │   ├── enterprise-system/       ← IT/platform admin-managed policies
@@ -113,6 +115,8 @@ claude-wizardry/
         ├── CLAUDE.md                ← Root instructions for Claude
         └── AGENTS.md                ← Sub-agent roster and roles
 ```
+
+> **`SOUL/` is the single source of truth for this project.** If you want to understand how tiers are defined, what artifacts belong where, or what the security defaults are — start with [`SOUL/CLAUDE.md`](SOUL/CLAUDE.md).
 
 ---
 
@@ -266,6 +270,10 @@ git push origin feat/your-feature-name
 | `scaffold:` | New framework or major scaffold change |
 | `fix:` | Correcting a path, hook, or rule reference |
 | `feat:` | New tier, new artifact type, new tool |
+
+### Before You Contribute
+
+Read [`SOUL/CLAUDE.md`](SOUL/CLAUDE.md) first — it defines the tier doctrine, artifact contracts, naming conventions, and security defaults that all frameworks must follow. It's the authoritative reference for what belongs where and why.
 
 ### What a Good PR Includes
 
